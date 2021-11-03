@@ -220,6 +220,12 @@ build() {
       ;;
   esac
 
+  ### LEAN SPECIFIC ###
+  platform_config+=(
+    -DLLVM_ENABLE_FFI=OFF -DLLVM_ENABLE_LIBXML2=OFF -DLLVM_ENABLE_TERMINFO=OFF
+    -DLLVM_TARGETS_TO_BUILD='AArch64;WebAssembly;X86')
+  ### END ###
+
   [[ -d build-${MSYSTEM} ]] && rm -rf build-${MSYSTEM}
   mkdir build-${MSYSTEM} && cd build-${MSYSTEM}
 
